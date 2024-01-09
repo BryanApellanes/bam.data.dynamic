@@ -14,7 +14,7 @@ namespace Bam.Net.Schema.Json
     /// </summary>
     public class JSchemaSchemaDefinitionGenerator: Loggable
     {
-        public JSchemaSchemaDefinitionGenerator(SchemaManager schemaManager, JSchemaClassManager jSchemaClassManager)
+        public JSchemaSchemaDefinitionGenerator(DaoSchemaManager schemaManager, JSchemaClassManager jSchemaClassManager)
         {
             Args.ThrowIfNull(jSchemaClassManager, "jSchemaClassManager");
             SchemaManager = schemaManager;
@@ -53,7 +53,7 @@ namespace Bam.Net.Schema.Json
         [Verbosity(VerbosityLevel.Information)]
         public event EventHandler AddedForeignKey;
         public ILogger Logger { get; private set; }
-        public SchemaManager SchemaManager { get; private set; }
+        public DaoSchemaManager SchemaManager { get; private set; }
         public JSchemaClassManager JSchemaClassManager { get; private set; }
 
         public JSchemaSchemaDefinition GenerateSchemaDefinition()

@@ -32,11 +32,11 @@ namespace Bam.Net.Schema.Json
             JSchemaManagementRegistry registry = new JSchemaManagementRegistry(rootData, format);
             JSchemaResolver resolver = FileSystemJSchemaResolver.ForFormat(rootData, format);
             JSchemaLoader loader = JSchemaLoader.ForFormat(format);
-            SchemaManager schemaManager = new SchemaManager(new HomePath($"~/.bam/data/JSchema_{nameof(SchemaManager)}.json"));
+            DaoSchemaManager schemaManager = new DaoSchemaManager(new HomePath($"~/.bam/data/JSchema_{nameof(DaoSchemaManager)}.json"));
             JSchemaClassManager jSchemaClassManager = new JavaJSchemaClassManager() {JSchemaResolver = resolver};
             classNameProperties.Each(cnp => jSchemaClassManager.AddClassNameProperty(cnp));
             registry
-                .For<SchemaManager>().Use(schemaManager)
+                .For<DaoSchemaManager>().Use(schemaManager)
                 .For<JSchemaResolver>().Use(resolver)
                 .For<JSchemaLoader>().Use(loader)
                 .For<JSchemaClassManager>().Use(jSchemaClassManager)

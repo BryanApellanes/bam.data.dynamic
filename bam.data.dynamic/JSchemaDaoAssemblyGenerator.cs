@@ -10,7 +10,7 @@ namespace Bam.Net.Schema.Json
     {
         private DaoAssemblyGenerator _daoGenerator;
 
-        public JSchemaDaoAssemblyGenerator(ISchemaExtractor schemaExtractor, IDaoGenerator daoGenerator, IDynamicDataWorkspacePath workspacePath = null) : base(schemaExtractor, daoGenerator, workspacePath)
+        public JSchemaDaoAssemblyGenerator(IDaoSchemaExtractor schemaExtractor, IDaoGenerator daoGenerator, IDynamicDataWorkspacePath workspacePath = null) : base(schemaExtractor, daoGenerator, workspacePath)
         {
         }
 

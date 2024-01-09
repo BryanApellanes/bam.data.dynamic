@@ -15,7 +15,7 @@ namespace Bam.Net.Data.Dynamic
 {
     public partial class DaoAssemblyGenerator: IAssemblyGenerator
     {
-        public DaoAssemblyGenerator(ISchemaExtractor schemaExtractor, IDaoGenerator daoGenerator, IDynamicDataWorkspacePath workspacePath = null)
+        public DaoAssemblyGenerator(IDaoSchemaExtractor schemaExtractor, IDaoGenerator daoGenerator, IDynamicDataWorkspacePath workspacePath = null)
         {
             this.SchemaExtractor = schemaExtractor;
             this.DaoGenerator = daoGenerator;
@@ -34,7 +34,7 @@ namespace Bam.Net.Data.Dynamic
             }*/
         }
 
-        public ISchemaExtractor SchemaExtractor { get; private set; }
+        public IDaoSchemaExtractor SchemaExtractor { get; private set; }
 
         public IDaoGenerator DaoGenerator { get; private set; }
         public IDynamicDataWorkspacePath WorkspacePath { get; private set; }
