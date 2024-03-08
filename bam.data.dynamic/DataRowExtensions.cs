@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bam.Data.dynamic
+namespace Bam.Data.Dynamic
 {
     public static class DataRowExtensions
     {

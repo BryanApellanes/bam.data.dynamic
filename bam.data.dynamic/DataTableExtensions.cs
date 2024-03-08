@@ -1,4 +1,4 @@
-﻿using Bam.Data.dynamic;
+﻿using Bam.Data.Dynamic;
 using System;
 using System.Collections.Generic;
 using System.Data;
