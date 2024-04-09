@@ -4,6 +4,7 @@
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <RootNamespace>Bam.Data.Dynamic</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,6 +20,11 @@
     <ProjectReference Include="..\..\bam.data.schema\bam.data.schema\bam.data.schema.csproj" />
     <ProjectReference Include="..\..\bam.data\bam.data\bam.data.csproj" />
     <ProjectReference Include="..\..\bam.generators\bam.generators\bam.generators.csproj" />
+    <ProjectReference Include="..\..\bam.storage\bam.storage\bam.storage.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Objects\" />
   </ItemGroup>
 
 </Project>

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Bam.Data.Dynamic;
 
 namespace Bam.Net.Data.Dynamic
 {

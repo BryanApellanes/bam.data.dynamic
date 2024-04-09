@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Bam.Net.Data.Dynamic.Data;
 
-namespace Bam.Net.Data.Dynamic.Data
+namespace Bam.Data.Dynamic
 {
     [Serializable]
     public class DynamicNamespaceDescriptor: KeyedAuditRepoData
@@ -14,16 +15,7 @@ namespace Bam.Net.Data.Dynamic.Data
         {
         }
 
-/*        static object _defaultLock = new object();
-        public static DynamicNamespaceDescriptor GetDefault(DynamicTypeDataRepository repo)
-        {
-            lock (_defaultLock)
-            {
-                return repo.GetOneDynamicNamespaceDescriptorWhere(d => d.Namespace == DefaultNamespace);
-            }
-        }*/
-
-        public static string DefaultNamespace => "Bam.Net.Data.Dynamic.RuntimeTypes";
+        public static string DefaultNamespace => "Bam.Data.Dynamic.RuntimeTypes";
 
         [CompositeKey]
         public string Namespace { get; set; }

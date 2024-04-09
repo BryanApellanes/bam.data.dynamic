@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.Common;
 using System.IO;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,6 +19,7 @@ namespace Bam.Net.Data
             //onDataReaderExecuted = onDataReaderExecuted ?? ((dr) => { });
             if (reader.HasRows)
             {
+                
                 List<string> columnNames = GetColumnNames(reader);
                 // TODO: Reimplement BuildDynamicType using current set of templates and compilers
                 //Type type = sqlStatement.Sha256().BuildDynamicType("Database.ExecuteDynamicReader", columnNames.ToArray());

@@ -20,18 +20,6 @@ namespace Bam.Net.Data.Dynamic
             this.SchemaExtractor = schemaExtractor;
             this.DaoGenerator = daoGenerator;
             this.WorkspacePath = workspacePath;
-/*            this.ReferenceAssemblies = new Assembly[] { };
-            this._referenceAssemblyPaths = new List<string>(AdHocCSharpCompiler.DefaultReferenceAssemblies);
-
-            this.Workspace = workspacePath ?? $"./{nameof(DaoAssemblyGenerator)}";
-            if (schemaExtractor != null)
-            {
-                SchemaExtractor = schemaExtractor;
-            }
-            else if (ServiceRegistry.Default.TryGet<ISchemaExtractor>(out ISchemaExtractor extractor))
-            {
-                SchemaExtractor = extractor;
-            }*/
         }
 
         public IDaoSchemaExtractor SchemaExtractor { get; private set; }

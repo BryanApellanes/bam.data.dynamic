@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Bam.Data.Dynamic;
 
 namespace Bam.Net.Data.Dynamic.Data
 {
@@ -18,13 +19,7 @@ namespace Bam.Net.Data.Dynamic.Data
 
 
         [CompositeKey]
-        public string Namespace
-        {
-            get
-            {
-                return DynamicNamespaceDescriptor?.Namespace;
-            }
-        }
+        public string Namespace => DynamicNamespaceDescriptor?.Namespace;
 
         /// <summary>
         /// The Sha256 of the original json or yaml data

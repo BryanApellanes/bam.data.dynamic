@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Bam.Data.Dynamic;
 
 namespace Bam.Net.Data.Dynamic.Data
 {
@@ -18,7 +19,7 @@ namespace Bam.Net.Data.Dynamic.Data
 
         public override int GetHashCode()
         {
-            return $"{DynamicTypeDescriptorId}:{ParentTypeName}:{PropertyType}:{PropertyName}".ToSha1Int();
+            return $"{DynamicTypeDescriptorId}:{ParentTypeName}:{PropertyType}:{PropertyName}".ToSha256Int();
         }
 
         public override bool Equals(object obj)

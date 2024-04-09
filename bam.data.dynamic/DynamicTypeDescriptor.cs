@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Bam.Net.Data.Dynamic.Data;
 
-namespace Bam.Net.Data.Dynamic.Data
+namespace Bam.Data.Dynamic
 {
     [Serializable]
     public class DynamicTypeDescriptor: KeyedAuditRepoData
