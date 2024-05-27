@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Bam.Net.Data.Dynamic
+namespace Bam.Data.Dynamic
 {
     public interface IDynamicTypeNameResolver
     {

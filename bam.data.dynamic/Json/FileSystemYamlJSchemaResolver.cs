@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json.Schema;
 
-namespace Bam.Net.Schema.Json
+namespace Bam.Schema.Json
 {
     /// <summary>
     /// A resolver for json schema entities defined in yaml files in the file system.

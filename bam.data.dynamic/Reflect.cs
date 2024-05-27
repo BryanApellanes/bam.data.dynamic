@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bam.Net.Data.Dynamic
+namespace Bam.Data.Dynamic
 {
     /// <summary>
     /// A convenience class for accessing common ReflectionExtensions.

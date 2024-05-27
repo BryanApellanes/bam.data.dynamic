@@ -1,7 +1,7 @@
 using System;
-using Bam.Net.Data.Schema;
+using Bam.Data.Schema;
 
-namespace Bam.Net.Schema.Json
+namespace Bam.Schema.Json
 {
     public class JSchemaSchemaDefinitionGeneratorEventArgs: EventArgs
     {

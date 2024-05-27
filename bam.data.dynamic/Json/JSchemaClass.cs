@@ -6,7 +6,7 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Schema;
 using YamlDotNet.Serialization;
 
-namespace Bam.Net.Schema.Json
+namespace Bam.Schema.Json
 {
     public class JSchemaClass
     {

@@ -1,10 +1,10 @@
 using System.Reflection;
 using Bam.Data.Dynamic;
-using Bam.Net.Data.Dynamic;
-using Bam.Net.Data.Schema;
+using Bam.Data.Dynamic;
+using Bam.Data.Schema;
 using Google.Protobuf.WellKnownTypes;
 
-namespace Bam.Net.Schema.Json
+namespace Bam.Schema.Json
 {
     public class JSchemaDaoAssemblyGenerator : DaoAssemblyGenerator
     {

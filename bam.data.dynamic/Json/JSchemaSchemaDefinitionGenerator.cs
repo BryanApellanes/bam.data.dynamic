@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Bam.Net.Data;
-using Bam.Net.Data.Schema;
-using Bam.Net.Logging;
+using Bam.Data;
+using Bam.Data.Schema;
+using Bam.Logging;
 using Newtonsoft.Json.Schema;
 
-namespace Bam.Net.Schema.Json
+namespace Bam.Schema.Json
 {
     /// <summary>
     /// A class used to generate a SchemaDefinition from one or more JSchemas

@@ -1,13 +1,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Serialization;
-using Bam.Net.Logging;
+using Bam.Logging;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Schema;
 using YamlDotNet.Serialization;
 
-namespace Bam.Net.Schema.Json
+namespace Bam.Schema.Json
 {
     public class JSchemaProperty
     {

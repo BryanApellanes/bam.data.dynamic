@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Bam.Net.Logging;
+using Bam.Logging;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace Bam.Net.Data.Dynamic
+namespace Bam.Data.Dynamic
 {
     public class DynamicTypeNameResolver : Loggable, IDynamicTypeNameResolver
     {

@@ -1,4 +1,4 @@
-﻿using Bam.Net.Data.Repositories;
+﻿using Bam.Data.Repositories;
 using Microsoft.CodeAnalysis;
 using System;
 using System.Collections.Generic;

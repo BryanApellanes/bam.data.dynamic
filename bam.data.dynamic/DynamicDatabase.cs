@@ -3,7 +3,7 @@
 */
 
 
-namespace Bam.Net.Data.Dynamic
+namespace Bam.Data.Dynamic
 {
     using System;
     using System.Collections.Generic;
@@ -11,11 +11,11 @@ namespace Bam.Net.Data.Dynamic
     using System.Linq.Expressions;
     using System.Text;
     using System.Threading.Tasks;
-    using Bam.Net;
-    using Bam.Net.Data;
-    using Bam.Net.Data.Schema;
-    using Bam.Net.Data.MsSql;
-    using Bam.Net.ExceptionHandling;
+    using Bam;
+    using Bam.Data;
+    using Bam.Data.Schema;
+    using Bam.Data.MsSql;
+    using Bam.ExceptionHandling;
     using System.Data.Common;
     using System.Reflection;
     using System.Data;
@@ -290,7 +290,7 @@ namespace Bam.Net.Data.Dynamic
                 {
                     // TODO: enable multiple operators like QiQuery, contains, doesn't contain starts with etc
                     string columnName = NameMap?.GetColumnName(tableName, prop.Name) ?? prop.Name;
-                    QueryFilter queryFilter = Bam.Net.Data.Query.Where(columnName) == prop.GetValue(where);
+                    QueryFilter queryFilter = Bam.Data.Query.Where(columnName) == prop.GetValue(where);
                     filter = filter.IsEmpty ? queryFilter : filter && queryFilter;
                 }
             }

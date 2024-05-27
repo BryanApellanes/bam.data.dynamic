@@ -8,10 +8,10 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using Bam.Data.Dynamic;
-using Bam.Net.CoreServices;
-using Bam.Net.Data.Schema;
+using Bam.CoreServices;
+using Bam.Data.Schema;
 
-namespace Bam.Net.Data.Dynamic
+namespace Bam.Data.Dynamic
 {
     public partial class DaoAssemblyGenerator: IAssemblyGenerator
     {

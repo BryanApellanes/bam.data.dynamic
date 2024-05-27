@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Schema;
 
-namespace Bam.Net.Schema.Json
+namespace Bam.Schema.Json
 {
     public class JSchemaNameParser
     {

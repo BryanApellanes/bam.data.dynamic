@@ -4,7 +4,7 @@ using System.Linq;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Schema;
 
-namespace Bam.Net.Schema.Json
+namespace Bam.Schema.Json
 {
     public static class JSchemaExtensions
     {

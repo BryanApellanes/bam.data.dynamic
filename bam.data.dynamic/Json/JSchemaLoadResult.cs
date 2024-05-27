@@ -1,7 +1,7 @@
 using System;
 using Newtonsoft.Json.Schema;
 
-namespace Bam.Net.Schema.Json
+namespace Bam.Schema.Json
 {
     public class JSchemaLoadResult
     {

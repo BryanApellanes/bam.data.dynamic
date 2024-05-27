@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Bam.Net.Schema.Json
+namespace Bam.Schema.Json
 {
     public class JavaJSchemaClassManager : JSchemaClassManager
     {

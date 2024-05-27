@@ -6,9 +6,9 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using Bam.Net.Data.Dynamic;
+using Bam.Data.Dynamic;
 
-namespace Bam.Net.Data
+namespace Bam.Data
 {
     public static partial class Sql
     {

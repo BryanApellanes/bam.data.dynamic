@@ -1,8 +1,8 @@
-﻿using Bam.Net.Data.Dynamic.Data;
-//using Bam.Net.Data.Dynamic.Data.Dao.Repository;
-using Bam.Net.Data.Repositories;
-using Bam.Net.Logging;
-//using Bam.Net.Logging.Counters;
+﻿using Bam.Data.Dynamic.Data;
+//using Bam.Data.Dynamic.Data.Dao.Repository;
+using Bam.Data.Repositories;
+using Bam.Logging;
+//using Bam.Logging.Counters;
 using CsvHelper;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -13,7 +13,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace Bam.Net.Data.Dynamic
+namespace Bam.Data.Dynamic
 {
     /// <summary>
     /// A class used to manage dynamic data and generated types.

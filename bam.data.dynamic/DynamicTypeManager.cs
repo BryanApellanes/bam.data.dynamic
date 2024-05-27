@@ -1,8 +1,8 @@
-﻿using Bam.Net.Data.Dynamic.Data;
-//using Bam.Net.Data.Dynamic.Data.Dao.Repository;
-/*using Bam.Net.Data.Repositories;
-using Bam.Net.Logging;
-using Bam.Net.Logging.Counters;
+﻿using Bam.Data.Dynamic.Data;
+//using Bam.Data.Dynamic.Data.Dao.Repository;
+/*using Bam.Data.Repositories;
+using Bam.Logging;
+using Bam.Logging.Counters;
 using CsvHelper;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -18,9 +18,9 @@ using System.Text;
 using System.Threading;
 using Microsoft.AspNetCore.Mvc;
 using YamlDotNet.Serialization;
-using Timer = Bam.Net.Logging.Counters.Timer;*/
+using Timer = Bam.Logging.Counters.Timer;*/
 
-namespace Bam.Net.Data.Dynamic
+namespace Bam.Data.Dynamic
 {
     // TOOD: review and fix
     /// <summary>

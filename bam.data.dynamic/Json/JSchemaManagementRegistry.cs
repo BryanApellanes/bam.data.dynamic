@@ -1,8 +1,8 @@
-using Bam.Net.CoreServices;
-using Bam.Net.Data.Schema;
+using Bam.CoreServices;
+using Bam.Data.Schema;
 using Newtonsoft.Json.Schema;
 
-namespace Bam.Net.Schema.Json
+namespace Bam.Schema.Json
 {
     public class JSchemaManagementRegistry : ServiceRegistry
     {

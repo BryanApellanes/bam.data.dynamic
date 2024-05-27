@@ -1,10 +1,10 @@
-﻿using Bam.Net.Data.Dynamic.Data;
+﻿using Bam.Data.Dynamic.Data;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using Bam.Data.Dynamic;
 
-namespace Bam.Net.Data.Dynamic
+namespace Bam.Data.Dynamic
 {
     public class DynamicDataSaveResult
     {

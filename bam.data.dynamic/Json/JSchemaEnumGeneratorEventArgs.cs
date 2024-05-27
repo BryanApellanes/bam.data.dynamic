@@ -1,6 +1,6 @@
 using System;
 
-namespace Bam.Net.Schema.Json
+namespace Bam.Schema.Json
 {
     public class JSchemaEnumGeneratorEventArgs : EventArgs
     {

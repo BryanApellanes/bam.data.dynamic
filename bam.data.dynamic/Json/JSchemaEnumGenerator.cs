@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Bam.Generators;
-using Bam.Net.Application;
-using Bam.Net.Logging;
-using Loggable = Bam.Net.Logging.Loggable;
+using Bam.Application;
+using Bam.Logging;
+using Loggable = Bam.Logging.Loggable;
 
-namespace Bam.Net.Schema.Json
+namespace Bam.Schema.Json
 {
     public class JSchemaEnumGenerator : Loggable
     {

@@ -9,7 +9,7 @@ using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bam.Net.Data
+namespace Bam.Data
 {
     public static partial class Sql
     {

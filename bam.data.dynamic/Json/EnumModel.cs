@@ -1,6 +1,6 @@
 using System.Linq;
 
-namespace Bam.Net.Schema.Json
+namespace Bam.Schema.Json
 {
     public class EnumModel
     {

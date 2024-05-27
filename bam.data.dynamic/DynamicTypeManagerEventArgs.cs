@@ -1,5 +1,5 @@
-﻿using Bam.Net.Data.Dynamic.Data;
-using Bam.Net.Data.Repositories;
+﻿using Bam.Data.Dynamic.Data;
+using Bam.Data.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Bam.Data.Dynamic;
 
-namespace Bam.Net.Data.Dynamic
+namespace Bam.Data.Dynamic
 {
     [Serializable]
     public class DynamicTypeManagerEventArgs : EventArgs
