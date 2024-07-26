@@ -1,4 +1,4 @@
-﻿using Bam.Data.Repositories;
+﻿ using Bam.Data.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
