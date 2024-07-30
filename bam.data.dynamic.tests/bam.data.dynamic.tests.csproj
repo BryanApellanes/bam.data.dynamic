@@ -9,7 +9,6 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\bam.base\bam.base\bam.base.csproj" />
-      <ProjectReference Include="..\..\bam.console\bam.console.tests\bam.sys.console.tests\bam.console.tests.csproj" />
       <ProjectReference Include="..\bam.data.dynamic\bam.data.dynamic.csproj" />
     </ItemGroup>
 
