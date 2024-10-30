@@ -28,29 +28,23 @@ namespace Bam.Data.Dynamic
         public IDynamicDataWorkspacePath WorkspacePath { get; private set; }
 
 
-        DaoSchemaDefinition schema;
-        readonly object schemaDefinitionLock = new object();
+        DaoSchemaDefinition _schema;
+        readonly object _schemaDefinitionLock = new object();
         public DaoSchemaDefinition Schema
         {
             get
             {
-                return schemaDefinitionLock.DoubleCheckLock(ref schema, () => SchemaExtractor.Extract());
+                return _schemaDefinitionLock.DoubleCheckLock(ref _schema, () => SchemaExtractor.Extract());
             }
-            set => schema = value;
+            set => _schema = value;
         }
         
         public SchemaNameMap NameMap { get; set; }
         public string FileName { get; private set; }
         public string Workspace { get; set; }
-        Assembly assembly;
-        readonly object assemblyLock = new object();
-        public Assembly Assembly
-        {
-            get
-            {
-                return assemblyLock.DoubleCheckLock(ref assembly, () => GetAssembly());
-            }
-        }
+        Assembly _assembly;
+        readonly object _assemblyLock = new object();
+        public Assembly Assembly => _assemblyLock.DoubleCheckLock(ref _assembly, GetAssembly);
 
         public TargetTableEventDelegate OnTableStarted
         {

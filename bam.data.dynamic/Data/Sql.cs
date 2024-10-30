@@ -15,6 +15,7 @@ namespace Bam.Data
     {
         public static IEnumerable<dynamic> ExecuteDynamicReader(this string sqlStatement, Database db, params DbParameter[] parameters)
         {
+            
             DbDataReader reader = null;// TODO: fix this => //db.ExecuteReader(sqlStatement, commandType, dbParameters, conn);
             //onDataReaderExecuted = onDataReaderExecuted ?? ((dr) => { });
             if (reader.HasRows)

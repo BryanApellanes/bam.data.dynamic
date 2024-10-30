@@ -25,6 +25,7 @@
 
   <ItemGroup>
     <Folder Include="Objects\" />
+    <Folder Include="Templates\" />
   </ItemGroup>
 
 </Project>
