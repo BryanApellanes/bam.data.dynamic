@@ -9,6 +9,7 @@ namespace Bam.Data.Dynamic
     {
         string ResolveJsonTypeName(string json);
         string ResolveYamlTypeName(string yaml);
-        string ResolveTypeName(JObject jobject);
+        string ResolveTypeName(JObject? jObject);
+        string ResolveTypeName(Dictionary<object, object>? value);
     }
 }

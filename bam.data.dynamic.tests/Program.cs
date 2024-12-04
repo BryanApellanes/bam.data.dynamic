@@ -1,4 +1,5 @@
 ﻿using Bam.Console;
+using Bam.Data.Dynamic;
 
 namespace Bam.Application
 {
@@ -7,6 +8,7 @@ namespace Bam.Application
     {
         static void Main(string[] args)
         {
+  
             BamConsoleContext.StaticMain(args);
         }
     }

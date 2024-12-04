@@ -72,7 +72,6 @@ namespace Bam.Data.Dynamic
                     yield return obj;
                 }
             }
-            yield break;
         }
 
         /// <summary>

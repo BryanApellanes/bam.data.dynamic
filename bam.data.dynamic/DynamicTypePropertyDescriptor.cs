@@ -12,14 +12,14 @@ namespace Bam.Data.Dynamic.Data
     public class DynamicTypePropertyDescriptor: RepoData
     {
         public ulong DynamicTypeDescriptorId { get; set; }
-        public virtual DynamicTypeDescriptor ParentType { get; set; }
-        public string ParentTypeName { get; set; }
-        public string PropertyType { get; set; }
-        public string PropertyName { get; set; }
+        public virtual DynamicTypeDescriptor? ParentType { get; set; }
+        public string? ParentTypeName { get; init; }
+        public string? PropertyType { get; init;}
+        public string? PropertyName { get; init; }
 
         public override int GetHashCode()
         {
-            return $"{DynamicTypeDescriptorId}:{ParentTypeName}:{PropertyType}:{PropertyName}".ToSha256Int();
+            return $"{ParentTypeName}:{PropertyType ?? "object"}:{PropertyName}".ToSha256Int();
         }
 
         public override bool Equals(object obj)

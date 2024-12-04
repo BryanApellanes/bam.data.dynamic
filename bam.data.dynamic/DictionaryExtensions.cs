@@ -10,12 +10,29 @@ namespace Bam.Data.Dynamic
 {
     public static class DictionaryExtensions
     {
-        public static dynamic ToDynamic(this Dictionary<object, object> dictionary, string typeName, string nameSpace = null)
+        public static Dictionary<object, object>? GetValue(this Dictionary<object, object> dictionary, string key)
         {
-            return ToDynamic(dictionary, typeName, () => new MetadataReference[] { }, nameSpace);
+            if(dictionary.TryGetValue(key, out object? value))
+            {
+                if (value is Dictionary<object, object> innerDictionary)
+                {
+                    return innerDictionary;
+                }
+
+                return new Dictionary<object, object>()
+                {
+                    { key, dictionary[key] }
+                };
+            }
+
+            return null;
+        }
+        public static dynamic? ToDto(this Dictionary<object, object> dictionary, string typeName, string nameSpace = null)
+        {
+            return ToDto(dictionary, typeName, () => new MetadataReference[] { }, nameSpace);
         }
 
-        public static dynamic ToDynamic(this Dictionary<object, object> dictionary, string typeName, Func<MetadataReference[]> getMetadataReferences, string nameSpace = null)
+        public static dynamic? ToDto(this Dictionary<object, object> dictionary, string typeName, Func<MetadataReference[]> getMetadataReferences, string nameSpace = null)
         {
             nameSpace = nameSpace ?? Dto.DefaultNamespace;
             return Dto.InstanceFor(nameSpace, typeName, dictionary);

@@ -9,11 +9,19 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\bam.base\bam.base\bam.base.csproj" />
+      <ProjectReference Include="..\..\bam.openapi\bam.openapi\bam.openapi.csproj" />
+      <ProjectReference Include="..\..\bam.test\bam.test\bam.test.csproj" />
       <ProjectReference Include="..\bam.data.dynamic\bam.data.dynamic.csproj" />
     </ItemGroup>
 
     <ItemGroup>
       <PackageReference Include="NSubstitute" Version="5.1.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="management-minimal.yaml">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
 </Project>

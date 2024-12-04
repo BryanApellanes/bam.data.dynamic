@@ -1,4 +1,4 @@
-namespace bam.data.dynamic.Data;
+namespace Bam.Data.Dynamic.Data;
 
 public class SetPropertyResult<TValue> : SetPropertyResult
 {

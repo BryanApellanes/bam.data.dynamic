@@ -9,17 +9,19 @@ using System.Linq;
 using System.Reflection;
 using Bam.Data.Dynamic;
 using Bam.CoreServices;
+using Bam.Data.Repositories;
 using Bam.Data.Schema;
 
 namespace Bam.Data.Dynamic
 {
-    public partial class DaoAssemblyGenerator: IAssemblyGenerator
+    public class DaoAssemblyGenerator: IAssemblyGenerator
     {
         public DaoAssemblyGenerator(IDaoSchemaExtractor schemaExtractor, IDaoGenerator daoGenerator, IDynamicDataWorkspacePath workspacePath = null)
         {
             this.SchemaExtractor = schemaExtractor;
             this.DaoGenerator = daoGenerator;
             this.WorkspacePath = workspacePath;
+            this.Subscribe(this.DaoGenerator);
         }
 
         public IDaoSchemaExtractor SchemaExtractor { get; private set; }
@@ -132,26 +134,23 @@ namespace Bam.Data.Dynamic
             {
                 sourceDir.Create();
             }
-            DaoGenerator generator = null;// TODO : fix this //new DaoGenerator(string.IsNullOrEmpty(Namespace) ? $"{this.GetType().Namespace}.Generated.".RandomLetters(6): Namespace);
-            Subscribe(generator);
-            generator.Generate(GetSchemaDefinition(), sourcePath);
+            
+            this.DaoGenerator.Generate(GetSchemaDefinition(), sourcePath);
         }
 
         public GeneratedAssemblyInfo Compile(string sourcePath, string fileName = null)
         {
             fileName = fileName ?? FileName;
-            CompilerResults compileResult = AdHocCSharpCompiler.CompileDirectory(new DirectoryInfo(sourcePath), fileName, ReferenceAssemblyPaths, false);
-            if (compileResult.Errors.Count > 0)
-            {
-                throw new CompilationException(compileResult);
-            }
+            RoslynCompiler compiler = new RoslynCompiler();
+            compiler.AddMetadataReferenceResolver(new AssemblyPathMetadataReferenceResolver(ReferenceAssemblyPaths));
+            byte[] assemblyBytes = compiler.CompileDirectories(fileName, new DirectoryInfo(sourcePath));
 
-            GeneratedAssemblyInfo result = new GeneratedAssemblyInfo(FilePath, compileResult);
+            GeneratedDaoAssemblyInfo result = new GeneratedDaoAssemblyInfo(FilePath, Assembly.Load(assemblyBytes), assemblyBytes);
             result.Save();
             return result;
         }
 
-        private void Subscribe(DaoGenerator generator)
+        private void Subscribe(IDaoGenerator generator)
         {
             if (OnGenerateStarted != null)
             {

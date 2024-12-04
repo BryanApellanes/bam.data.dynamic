@@ -1,0 +1,24 @@
+namespace {{Namespace}}
+{
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Reflection;
+    using Bam;
+    using Bam.Data;
+    using Bam.Data.Dynamic;
+{{Usings}}
+
+    [Serializable]
+    public class {{TypeName}}: DynamicData
+    {
+        public {{TypeName}}()
+        {
+        }
+    
+    {{#each Properties}}
+        {{this}}
+    {{/each}}
+    
+    }
+}
