@@ -1,0 +1,113 @@
+/*
+	Copyright © Bryan Apellanes 2015  
+*/
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using System.Text;
+using Bam.Data.Repositories;
+using Bam.Data.Schema;
+using Bam.Generators;
+//using Bam.Presentation.Handlebars;
+using Bam.ServiceProxy;
+using Microsoft.CodeAnalysis;
+using MongoDB.Driver;
+
+namespace Bam.Data.Dynamic
+{
+    public class DynamicObjectModel
+	{
+		readonly IRenderer _renderer;
+		public DynamicObjectModel(Type dynamicType, string nameSpace, IRenderer? renderer = null)
+		{
+			TypeName = dynamicType.Name;
+			_renderer = renderer ?? new HandlebarsTemplateRenderer();
+			List<string> properties = new System.Collections.Generic.List<string>();
+			HashSet<Type> types = new HashSet<Type>();
+			foreach(PropertyInfo p in dynamicType.GetProperties())
+			{
+				Type? type = (p.PropertyType.IsGenericType && p.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>)) ? Nullable.GetUnderlyingType(p.PropertyType) : p.PropertyType;
+				properties.Add("\t\tpublic {0} {1} {{get; set;}}\r\n".Format(type.Name, p.Name));
+				types.Add(type);
+			}
+			Properties = properties.ToArray();
+			Type = dynamicType;
+			Namespace = nameSpace;
+			MetadataReferenceResolver = new MetadataReferenceResolver(types.ToArray());
+			ReferenceTypes = types;
+			CleanTypeName();
+		}
+
+        public DynamicObjectModel(string nameSpace, string typeName, params DynamicObjectPropertyModel[] propertyModels)
+        {
+            List<string> properties = new List<string>();
+            HashSet<Type> types = new HashSet<Type>();
+            foreach(DynamicObjectPropertyModel p in propertyModels)
+            {
+                properties.Add("\t\tpublic {0} {1} {{get; set;}}\r\n".Format(p.PropertyType, p.PropertyName));
+                types.Add(p.PropertyInfo.PropertyType);
+            }
+            MetadataReferenceResolver = new MetadataReferenceResolver(types.ToArray());
+            ReferenceTypes = types;
+            TypeName = typeName;
+            _renderer = new HandlebarsTemplateRenderer();
+            Properties = properties.ToArray();
+            Namespace = nameSpace;
+            CleanTypeName();
+        }
+
+        public DynamicObjectModel(string nameSpace, string typeName, Dictionary<object, object> propertyValues)
+        {
+	        TypeName = typeName;
+	        _renderer = new HandlebarsTemplateRenderer();
+	        List<string> propertyNames = new List<string>();
+	        HashSet<Type> types = new HashSet<Type>();
+	        foreach (object key in propertyValues.Keys)
+	        {
+		        string? propertyName = key.ToString();
+		        object propertyValue = propertyValues[key];
+		        Type type = propertyValue.GetType();
+		        types.Add(type);
+		        string propertyTypeName = type.Name;
+		        propertyNames.Add($"\t\tpublic {propertyTypeName} {propertyName} {{get; set;}}\r\n");
+	        }
+	        MetadataReferenceResolver = new MetadataReferenceResolver(types.ToArray());
+	        ReferenceTypes = types;
+	        Properties = propertyNames.ToArray();
+	        Namespace = nameSpace;
+	        CleanTypeName();
+        }
+
+        protected HashSet<Type> ReferenceTypes { get; set; }
+        public MetadataReferenceResolver MetadataReferenceResolver { get; private set; }
+
+        public string Usings => GetUsings();
+        public string TypeName { get; set; }
+		public string Namespace { get; set; }
+		public string[] Properties { get; set; }
+
+		public Type Type { get; set; }
+        public string Render()
+        {
+			return _renderer.Render(nameof(DynamicObject), this);
+        }
+
+        private string GetUsings()
+		{
+			StringBuilder result = new StringBuilder();
+			ReferenceTypes.Each(t => result.Append($"\tusing {t.Namespace};\r\n"));
+			return result.ToString();
+		}
+
+		private void CleanTypeName()
+		{
+			TypeName = CleanTypeName(TypeName);
+		}
+
+		internal static string CleanTypeName(string typeName)
+		{
+			return typeName.Replace(".", "_").Replace("/", "");
+		}
+	}
+}

@@ -11,20 +11,40 @@
     <PackageReference Include="CsvHelper" Version="33.0.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Newtonsoft.Json.Schema" Version="4.0.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\bam.base\bam.base\bam.base.csproj" />
-    <ProjectReference Include="..\..\bam.data.backup\bam.data.backup\bam.data.backup.csproj" />
-    <ProjectReference Include="..\..\bam.data.repositories\bam.data.repositories\bam.data.repositories.csproj" />
-    <ProjectReference Include="..\..\bam.data.schema\bam.data.schema\bam.data.schema.csproj" />
-    <ProjectReference Include="..\..\bam.data\bam.data\bam.data.csproj" />
-    <ProjectReference Include="..\..\bam.generators\bam.generators\bam.generators.csproj" />
-    <ProjectReference Include="..\..\bam.storage\bam.storage\bam.storage.csproj" />
+    <PackageReference Include="YamlDotNet" Version="16.2.1" />
   </ItemGroup>
 
   <ItemGroup>
     <Compile Remove="DynamicTypeManagerOld.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeAnalysis">
+      <HintPath>..\..\..\..\..\.nuget\packages\microsoft.codeanalysis.common\4.11.0\lib\net8.0\Microsoft.CodeAnalysis.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\bam.application\bam.application\bam.application.csproj" />
+    <ProjectReference Include="..\..\bam.base\bam.base\bam.base.csproj" />
+    <ProjectReference Include="..\..\bam.configuration\bam.configuration\bam.configuration.csproj" />
+    <ProjectReference Include="..\..\bam.data.objects\bam.data.objects\bam.data.objects.csproj" />
+    <ProjectReference Include="..\..\bam.data.repositories\bam.data.repositories\bam.data.repositories.csproj" />
+    <ProjectReference Include="..\..\bam.data.schema\bam.data.schema\bam.data.schema.csproj" />
+    <ProjectReference Include="..\..\bam.data\bam.data.config\bam.data.config.csproj" />
+    <ProjectReference Include="..\..\bam.data\bam.data.firebird\bam.data.firebird.csproj" />
+    <ProjectReference Include="..\..\bam.data\bam.data.mssql\bam.data.mssql.csproj" />
+    <ProjectReference Include="..\..\bam.data\bam.data.mysql\bam.data.mysql.csproj" />
+    <ProjectReference Include="..\..\bam.data\bam.data.oracle\bam.data.oracle.csproj" />
+    <ProjectReference Include="..\..\bam.data\bam.data.postgres\bam.data.postgres.csproj" />
+    <ProjectReference Include="..\..\bam.data\bam.data\bam.data.csproj" />
+    <ProjectReference Include="..\..\bam.generators\bam.generators\bam.generators.csproj" />
+    <ProjectReference Include="..\..\bam.logging\bam.logging\bam.logging.csproj" />
+    <ProjectReference Include="..\..\bam.storage\bam.storage\bam.storage.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Templates\DynamicObject.hbs" />
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,23 @@
+namespace {{Namespace}}
+{
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Reflection;
+    using Bam;
+    using Bam.Data;
+{{Usings}}
+
+    [Serializable]
+    public class {{TypeName}}
+    {
+        public {{TypeName}}()
+        {
+        }
+
+{{#each Properties}}
+{{this}}
+{{/each}}	
+
+    }
+}

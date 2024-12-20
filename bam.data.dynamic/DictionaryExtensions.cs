@@ -34,8 +34,8 @@ namespace Bam.Data.Dynamic
 
         public static dynamic? ToDto(this Dictionary<object, object> dictionary, string typeName, Func<MetadataReference[]> getMetadataReferences, string nameSpace = null)
         {
-            nameSpace = nameSpace ?? Dto.DefaultNamespace;
-            return Dto.InstanceFor(nameSpace, typeName, dictionary);
+            nameSpace = nameSpace ?? DynamicObject.DefaultNamespace;
+            return DynamicObject.For(nameSpace, typeName, dictionary);
         }
     }
 }
