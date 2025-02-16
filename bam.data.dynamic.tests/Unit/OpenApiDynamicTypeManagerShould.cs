@@ -1,6 +1,4 @@
-using Bam;
 using Bam.Console;
-using Bam.Data.Dynamic;
 using Bam.OpenApi;
 using Bam.Test;
 

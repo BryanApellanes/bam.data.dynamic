@@ -1,5 +1,6 @@
-using Bam.CoreServices;
 using Bam.Data.Schema;
+using Bam.DependencyInjection;
+using Bam.Services;
 using Newtonsoft.Json.Schema;
 
 namespace Bam.Schema.Json

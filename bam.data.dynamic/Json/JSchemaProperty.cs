@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Linq;
 using System.Xml.Serialization;
 using Bam.Logging;
 using Newtonsoft.Json;

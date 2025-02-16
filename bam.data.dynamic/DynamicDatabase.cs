@@ -8,18 +8,12 @@ namespace Bam.Data.Dynamic
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Linq.Expressions;
-    using System.Text;
-    using System.Threading.Tasks;
     using Bam;
     using Bam.Data;
     using Bam.Data.Schema;
-    using Bam.Data.MsSql;
-    using Bam.ExceptionHandling;
     using System.Data.Common;
     using System.Reflection;
     using System.Data;
-    using Bam.Data.Dynamic;
 
     /// <summary>
     /// A dynamic crud interface to a database

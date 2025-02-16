@@ -1,18 +1,11 @@
 /*
 	Copyright © Bryan Apellanes 2015  
 */
-using System;
-using System.Collections.Generic;
-using System.Linq;
+
 using System.Reflection;
 using System.Text;
-using Bam.Data.Repositories;
-using Bam.Data.Schema;
 using Bam.Generators;
 //using Bam.Presentation.Handlebars;
-using Bam.ServiceProxy;
-using Microsoft.CodeAnalysis;
-using MongoDB.Driver;
 
 namespace Bam.Data.Dynamic
 {

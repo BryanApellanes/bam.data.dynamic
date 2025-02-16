@@ -1,8 +1,5 @@
-using System.Reflection;
-using Bam.Data.Dynamic;
 using Bam.Data.Dynamic;
 using Bam.Data.Schema;
-using Google.Protobuf.WellKnownTypes;
 
 namespace Bam.Schema.Json
 {

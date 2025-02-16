@@ -1,5 +1,3 @@
-using System.Collections;
-
 namespace Bam.Data.Dynamic;
 
 public interface IEnumerableItemDynamicTypeNameResolver

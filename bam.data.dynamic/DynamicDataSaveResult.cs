@@ -1,8 +1,4 @@
 ﻿using Bam.Data.Dynamic.Data;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Bam.Data.Dynamic;
 
 namespace Bam.Data.Dynamic
 {

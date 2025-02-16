@@ -1,11 +1,6 @@
 ﻿ using Bam.Data.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Bam.Data.Dynamic.Data
+ namespace Bam.Data.Dynamic.Data
 {
     /// <summary>
     /// Represents the original document used

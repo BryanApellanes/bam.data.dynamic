@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Bam.Data.Dynamic
+﻿namespace Bam.Data.Dynamic
 {
     public class DynamicTypeNameEventArgs: EventArgs
     {

@@ -2,13 +2,7 @@
 	Copyright © Bryan Apellanes 2015  
 */
 
-using System.CodeDom.Compiler;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Reflection;
-using Bam.Data.Dynamic;
-using Bam.CoreServices;
 using Bam.Data.Repositories;
 using Bam.Data.Schema;
 

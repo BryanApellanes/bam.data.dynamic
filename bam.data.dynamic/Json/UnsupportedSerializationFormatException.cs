@@ -1,5 +1,3 @@
-using System;
-
 namespace Bam.Schema.Json
 {
     public class UnsupportedSerializationFormatException: Exception

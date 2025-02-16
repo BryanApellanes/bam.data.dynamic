@@ -1,14 +1,8 @@
 /*
 	Copyright © Bryan Apellanes 2015  
 */
-using System;
-using System.Collections.Generic;
-using System.Linq;
+
 using System.Reflection;
-using System.IO;
-using System.Runtime.CompilerServices;
-using Bam.Data.Repositories;
-using Bam.Generators;
 using Microsoft.CodeAnalysis;
 
 namespace Bam.Data.Dynamic

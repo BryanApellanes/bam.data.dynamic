@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Newtonsoft.Json.Schema;
 
 namespace Bam.Schema.Json

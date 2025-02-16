@@ -1,4 +1,3 @@
-using System;
 using Newtonsoft.Json.Schema;
 
 namespace Bam.Schema.Json

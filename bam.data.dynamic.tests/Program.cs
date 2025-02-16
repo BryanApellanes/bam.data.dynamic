@@ -1,5 +1,4 @@
 ﻿using Bam.Console;
-using Bam.Data.Dynamic;
 
 namespace Bam.Application
 {

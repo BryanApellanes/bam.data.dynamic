@@ -1,9 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using Bam.Generators;
-using Bam.Application;
 using Bam.Logging;
 using Loggable = Bam.Logging.Loggable;
 

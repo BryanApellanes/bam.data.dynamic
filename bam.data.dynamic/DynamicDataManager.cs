@@ -1,17 +1,5 @@
-﻿using Bam.Data.Dynamic.Data;
-//using Bam.Data.Dynamic.Data.Dao.Repository;
-using Bam.Data.Repositories;
-using Bam.Logging;
+﻿//using Bam.Data.Dynamic.Data.Dao.Repository;
 //using Bam.Logging.Counters;
-using CsvHelper;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.IO;
-using System.Linq;
-using System.Text;
 
 namespace Bam.Data.Dynamic
 {

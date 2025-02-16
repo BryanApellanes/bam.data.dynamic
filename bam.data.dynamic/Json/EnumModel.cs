@@ -1,5 +1,3 @@
-using System.Linq;
-
 namespace Bam.Schema.Json
 {
     public class EnumModel

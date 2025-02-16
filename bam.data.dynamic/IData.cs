@@ -1,6 +1,4 @@
 using Bam.Data.Dynamic.Data;
-using Bam.Data;
-using Bam.Data.Repositories;
 
 namespace Bam.Data.Dynamic;
 

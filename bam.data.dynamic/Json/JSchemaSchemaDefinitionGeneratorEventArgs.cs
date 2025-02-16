@@ -1,4 +1,3 @@
-using System;
 using Bam.Data.Schema;
 
 namespace Bam.Schema.Json
