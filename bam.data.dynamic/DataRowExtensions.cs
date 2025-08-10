@@ -6,7 +6,7 @@ namespace Bam.Data.Dynamic
     {
         public static dynamic ToDynamic(this DataRow row, string typeName, string nameSpace = null)
         {
-            return row.ToDictionary().ToDto(typeName, nameSpace);
+            return row.ToDictionary().ToDynamic(typeName, nameSpace);
         }
 
         public static Dictionary<object, object> ToDictionary(this DataRow row)

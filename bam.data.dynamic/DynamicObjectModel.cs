@@ -53,7 +53,7 @@ namespace Bam.Data.Dynamic
         public DynamicObjectModel(string nameSpace, string typeName, Dictionary<object, object> propertyValues)
         {
 	        TypeName = typeName;
-	        _renderer = new HandlebarsTemplateRenderer();
+	        _renderer = new HandlebarsTemplateRenderer(new HandlebarsEmbeddedResources(Assembly.GetExecutingAssembly()));
 	        List<string> propertyNames = new List<string>();
 	        HashSet<Type> types = new HashSet<Type>();
 	        foreach (object key in propertyValues.Keys)

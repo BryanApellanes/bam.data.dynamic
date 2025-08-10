@@ -4,7 +4,7 @@ using Bam.Test;
 
 namespace Bam.Data.Dynamic.Tests.Unit;
 
-[UnitTestMenu("DynamicTypeManagerShould")]
+[UnitTestMenu("OpenApiDynamicTypeManagerShould")]
 public class OpenApiDynamicTypeManagerShould : UnitTestMenuContainer
 {
     public const string SPEC = "./management-minimal.yaml";
