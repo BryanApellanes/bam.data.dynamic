@@ -15,11 +15,19 @@ public class DynamicTypeManagerShould : UnitTestMenuContainer
                 .For<IEnumerableItemDynamicTypeNameResolver>().Use<EnumerableItemDynamicTypeNameResolver>();
         });
     }
-    
+
     [UnitTest]
-    public async Task CreateDescriptorsForNestedDictionary()
+    public void CreateDescriptorsForNestedDictionary()
     {
-        DynamicTypeManager dynamicTypeManager = Get<DynamicTypeManager>();
-        
+        When.A<DynamicTypeManager>("is resolved from service registry",
+            () => Get<DynamicTypeManager>(),
+            (dynamicTypeManager) => dynamicTypeManager)
+        .TheTest
+        .ShouldPass(because =>
+        {
+            because.TheResult.IsNotNull();
+        })
+        .SoBeHappy()
+        .UnlessItFailed();
     }
 }
