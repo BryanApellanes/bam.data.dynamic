@@ -23,7 +23,7 @@ public class DictionaryShould : UnitTestMenuContainer
             (d) =>
             {
                 dynamic? obj = d.ToDynamic(testTypeName);
-                return obj;
+                return obj!;
             })
         .TheTest
         .ShouldPass(because =>
