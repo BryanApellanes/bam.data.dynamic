@@ -11,7 +11,7 @@ namespace Bam.Schema.Json
         }
         
         static readonly object _defaultResolverLock = new object();
-        private static JSchemaResolver _jSchemaResolver;
+        private static JSchemaResolver _jSchemaResolver = null!;
 
         public static JSchemaResolver DefaultJSchemaResolver
         {

@@ -8,7 +8,7 @@
         }
 
         public string Namespace { get; set; }
-        public string TypeName { get; set; }
-        public FileInfo FileInfo { get; set; }
+        public string TypeName { get; set; } = null!;
+        public FileInfo FileInfo { get; set; } = null!;
     }
 }

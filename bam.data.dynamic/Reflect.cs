@@ -21,7 +21,7 @@ namespace Bam.Data.Dynamic
         /// <returns></returns>
         public static T Property<T>(this object instance, string propertyName, bool throwIfPropertyNotFound = true)
         {
-            return ReflectionExtensions.Property<T>(instance, propertyName, throwIfPropertyNotFound);
+            return ReflectionExtensions.Property<T>(instance, propertyName, throwIfPropertyNotFound)!;
         }
 
         public static object Property(this object instance, string propertyName, object value, bool throwIfPropertyNotFound = true)
@@ -49,7 +49,7 @@ namespace Bam.Data.Dynamic
         /// <returns></returns>
         public static object Property(this object instance, string propertyName, bool throwIfPropertyNotFound = true)
         {
-            return ReflectionExtensions.Property(instance, propertyName, throwIfPropertyNotFound);
+            return ReflectionExtensions.Property(instance, propertyName, throwIfPropertyNotFound)!;
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace Bam.Data.Dynamic
         /// <param name="sql"></param>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        public static IEnumerable<dynamic> ExecuteSqlQuery(this string sql, Database db, Dictionary<string, object> parameters = null)
+        public static IEnumerable<dynamic> ExecuteSqlQuery(this string sql, Database db, Dictionary<string, object> parameters = null!)
         {
             DynamicDatabase ddb = new DynamicDatabase(db);
             return ddb.Query(sql, parameters ?? new Dictionary<string, object>());

@@ -11,7 +11,7 @@ namespace Bam.Schema.Json
             {
                 return false;
             }
-            return jSchema.Type.ToString().Equals("object", StringComparison.InvariantCultureIgnoreCase);
+            return jSchema.Type!.ToString()!.Equals("object", StringComparison.InvariantCultureIgnoreCase);
         }
 
         public static bool IsEnum(this JSchema jSchema)
@@ -21,7 +21,7 @@ namespace Bam.Schema.Json
 
         public static bool IsEnum(this JSchema jSchema, out string[] enumValues)
         {
-            enumValues = jSchema.Enum?.Select(v => v.ToString()).ToArray();
+            enumValues = jSchema.Enum?.Select(v => v.ToString()).ToArray()!;
             return jSchema.Enum != null && enumValues.Length > 0;
         }
 
@@ -43,7 +43,7 @@ namespace Bam.Schema.Json
         public static bool HasDefinitions(this JSchema jSchema, out JSchema definitions)
         {
             bool result = HasProperty(jSchema, "definitions", out object definitionz);
-            definitions = (JSchema)definitionz;
+            definitions = (JSchema)definitionz!;
             return result;
         }
         
@@ -69,8 +69,8 @@ namespace Bam.Schema.Json
         /// <returns></returns>
         public static bool HasProperty(this JSchema jSchema, string propertyName, out object value)
         {
-            bool result = (bool) (jSchema?.ExtensionData.ContainsKey(propertyName));
-            value = null;
+            bool result = (bool) (jSchema!.ExtensionData.ContainsKey(propertyName));
+            value = null!;
             if (result)
             {
                 value = jSchema.ExtensionData[propertyName];
@@ -127,7 +127,7 @@ namespace Bam.Schema.Json
             
             foreach (JProperty property in root.Properties())
             {
-                string value = root.Property(property.Name).Value.ToString();
+                string value = root.Property(property.Name)!.Value.ToString();
                 if (int.TryParse(value, out int intValue))
                 {
                     root[property.Name] = intValue;

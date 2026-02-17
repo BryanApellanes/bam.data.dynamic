@@ -7,7 +7,7 @@ public class GetPropertyResult<T> : GetPropertyResult
         return v.Value;
     }
     
-    private T _value;
+    private T _value = default!;
     public new T Value
     {
         get

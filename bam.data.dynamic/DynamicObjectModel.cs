@@ -21,7 +21,7 @@ namespace Bam.Data.Dynamic
 			foreach(PropertyInfo p in dynamicType.GetProperties())
 			{
 				Type? type = (p.PropertyType.IsGenericType && p.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>)) ? Nullable.GetUnderlyingType(p.PropertyType) : p.PropertyType;
-				properties.Add("\t\tpublic {0} {1} {{get; set;}}\r\n".Format(type.Name, p.Name));
+				properties.Add("\t\tpublic {0} {1} {{get; set;}}\r\n".Format(type!.Name, p.Name));
 				types.Add(type);
 			}
 			Properties = properties.ToArray();
@@ -80,7 +80,7 @@ namespace Bam.Data.Dynamic
 		public string Namespace { get; set; }
 		public string[] Properties { get; set; }
 
-		public Type Type { get; set; }
+		public Type Type { get; set; } = null!;
         public string Render()
         {
 			return _renderer.Render(nameof(DynamicObject), this);

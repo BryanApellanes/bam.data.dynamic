@@ -88,9 +88,9 @@ public class DynamicDataModel
 
     public string[] Properties
     {
-        get; 
+        get;
         set;
-    }
+    } = null!;
 
     private Dictionary<object, object>? _data;
     public Dictionary<object, object>? Data
@@ -128,5 +128,5 @@ public class DynamicDataModel
     {
         get;
         set;
-    }
+    } = null!;
 }

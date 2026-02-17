@@ -23,11 +23,11 @@ namespace Bam.Schema.Json
             Exception = exception;
         }
         
-        public string Path { get; set; }
-        public JSchema JSchema { get; set; }
+        public string Path { get; set; } = null!;
+        public JSchema JSchema { get; set; } = null!;
         public bool Success => Exception == null;
-        public string Message => Exception?.Message;
-        public string StackTrace => Exception?.StackTrace;
-        private Exception Exception { get; set; } 
+        public string Message => Exception?.Message!;
+        public string StackTrace => Exception?.StackTrace!;
+        private Exception Exception { get; set; } = null!;
     }
 }

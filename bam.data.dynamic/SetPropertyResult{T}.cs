@@ -2,7 +2,7 @@ namespace Bam.Data.Dynamic.Data;
 
 public class SetPropertyResult<TValue> : SetPropertyResult
 {
-    private TValue _value;
+    private TValue _value = default!;
     public new TValue Value
     {
         get
@@ -17,7 +17,7 @@ public class SetPropertyResult<TValue> : SetPropertyResult
         set
         {
             _value = value;
-            base.Value = value;
+            base.Value = value!;
         }
     }
 }

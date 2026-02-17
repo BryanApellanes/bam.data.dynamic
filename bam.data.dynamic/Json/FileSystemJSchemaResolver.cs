@@ -19,7 +19,7 @@ namespace Bam.Schema.Json
             Collected = new HashSet<JSchema>();
         }
         
-        public static FileSystemJSchemaResolver Default { get; set; }
+        public static FileSystemJSchemaResolver Default { get; set; } = null!;
 
         public static FileSystemJSchemaResolver ForFormat(string rootDirectory, SerializationFormat format)
         {
@@ -35,7 +35,7 @@ namespace Bam.Schema.Json
             }
             throw new UnsupportedSerializationFormatException(format);
         }
-        public JSchemaLoader JSchemaLoader { get; set; }
+        public JSchemaLoader JSchemaLoader { get; set; } = null!;
         
         public DirectoryInfo RootDirectory { get; set; }
         
@@ -53,7 +53,7 @@ namespace Bam.Schema.Json
             {
                 foreach (string key in rootSchema.ExtensionData.Keys)
                 {
-                    JObject jObject = rootSchema.ExtensionData[key] as JObject;
+                    JObject jObject = (rootSchema.ExtensionData[key] as JObject)!;
                     jObject?.ConvertJSchemaPropertyTypes();
                 }
 
@@ -63,39 +63,39 @@ namespace Bam.Schema.Json
             
             string subSchemaId = reference.SubschemaId.ToString(); // path in file
             object[] pathSegments = subSchemaId.DelimitSplit("/");
-            if (pathSegments.First().Equals("#"))
+            if (pathSegments.First()!.Equals("#"))
             {
                 pathSegments = pathSegments.Skip(1).ToArray();
             }
 
-            JObject node = null;
+            JObject node = null!;
             foreach (string segment in pathSegments)
             {
                 if (node == null)
                 {
-                    node = rootSchema.ExtensionData[segment] as JObject;
+                    node = (rootSchema.ExtensionData[segment] as JObject)!;
                 }
                 else
                 {
-                    node = node[segment] as JObject;
+                    node = (node[segment] as JObject)!;
                 }
             }
 
-            node.ConvertJSchemaPropertyTypes();
+            node!.ConvertJSchemaPropertyTypes();
             string refValue = string.Empty;
             if (node["$ref"] != null)
             {
-                refValue = node["$ref"].ToString();
+                refValue = node["$ref"]!.ToString();
                 node = JObject.Parse(GetSubschema(CreateSchemaReference(reference, refValue), rootSchema).ToString());
             }
             else if (node["type"] != null)
             {
-                JSchemaType type = Enum.Parse<JSchemaType>(node["type"].ToString(), true);
+                JSchemaType type = Enum.Parse<JSchemaType>(node["type"]!.ToString(), true);
                 if (type == JSchemaType.Array)
                 {
                     if (node["items"]?["$ref"] != null)
                     {
-                        refValue = node["items"]["$ref"].ToString();
+                        refValue = node["items"]!["$ref"]!.ToString();
                         node["items"] = JObject.Parse(GetSubschema(CreateSchemaReference(reference, refValue), rootSchema).ToString());
                     }
                 }
@@ -134,13 +134,13 @@ namespace Bam.Schema.Json
         private JObject ResolveRefs(JObject node, SchemaReference rootReference, JSchema rootSchema)
         {
             JObject result = JObject.Parse(node.ToString());
-            foreach (JProperty property in ((JObject) node["properties"]).Properties())
+            foreach (JProperty property in ((JObject) node["properties"]!).Properties())
             {
                 if (property.Value["$ref"] != null)
                 {
-                    SchemaReference subRef = CreateSchemaReference(rootReference, property.Value["$ref"].ToString());
+                    SchemaReference subRef = CreateSchemaReference(rootReference, property.Value["$ref"]!.ToString());
                     JSchema jSchema = GetSubschema(subRef, rootSchema);
-                    result["properties"][property.Name] = JObject.Parse(jSchema.ToString());
+                    result["properties"]![property.Name] = JObject.Parse(jSchema.ToString());
                 }
             }
 

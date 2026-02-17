@@ -16,39 +16,39 @@ namespace Bam.Schema.Json
             SchemaManager = schemaManager;
             JSchemaClassManager = jSchemaClassManager;
             JsonSchemaRootPath = "./JsonSchema/";
-            Logger = Log.Default;
+            Logger = Log.Default!;
             SchemaManager.ManageSchema(Path.Combine(BamProfile.DataPath, "SchemaDefinition_FromJSchemas.json"));
         }
         
         public string JsonSchemaRootPath { get; set; }
         
         [Verbosity(VerbosityLevel.Information)]
-        public event EventHandler GenerateSchemaDefinitionStarted;
-        
+        public event EventHandler GenerateSchemaDefinitionStarted = null!;
+
         [Verbosity(VerbosityLevel.Information)]
-        public event EventHandler GenerateSchemaDefinitionComplete;
-        
+        public event EventHandler GenerateSchemaDefinitionComplete = null!;
+
         [Verbosity(VerbosityLevel.Error)]
-        public event EventHandler GenerateSchemaDefinitionException;
-        
-        [Verbosity(VerbosityLevel.Information)]
-        public event EventHandler AddingTable;
-        
-        [Verbosity(VerbosityLevel.Information)]
-        public event EventHandler AddedTable;
+        public event EventHandler GenerateSchemaDefinitionException = null!;
 
         [Verbosity(VerbosityLevel.Information)]
-        public event EventHandler AddingColumn;
+        public event EventHandler AddingTable = null!;
 
         [Verbosity(VerbosityLevel.Information)]
-        public event EventHandler AddedColumn;
+        public event EventHandler AddedTable = null!;
 
         [Verbosity(VerbosityLevel.Information)]
-        public event EventHandler AddingForeignKey;
+        public event EventHandler AddingColumn = null!;
 
         [Verbosity(VerbosityLevel.Information)]
-        public event EventHandler AddedForeignKey;
-        public ILogger Logger { get; private set; }
+        public event EventHandler AddedColumn = null!;
+
+        [Verbosity(VerbosityLevel.Information)]
+        public event EventHandler AddingForeignKey = null!;
+
+        [Verbosity(VerbosityLevel.Information)]
+        public event EventHandler AddedForeignKey = null!;
+        public ILogger Logger { get; private set; } = null!;
         public DaoSchemaManager SchemaManager { get; private set; }
         public JSchemaClassManager JSchemaClassManager { get; private set; }
 
@@ -129,7 +129,7 @@ namespace Bam.Schema.Json
 
         private EventArgs GetEventArgs(Exception ex)
         {
-            return GetEventArgs(null, null, ex);
+            return GetEventArgs(null!, null!, ex);
         }
 
         private EventArgs GetEventArgs(IDaoSchemaDefinition schemaDefinition)
@@ -139,7 +139,7 @@ namespace Bam.Schema.Json
             return args;
         }
         
-        private EventArgs GetEventArgs(string tableName = null, string columnName = null, Exception ex = null)
+        private EventArgs GetEventArgs(string tableName = null!, string columnName = null!, Exception ex = null!)
         {
             JSchemaSchemaDefinitionGeneratorEventArgs args = new JSchemaSchemaDefinitionGeneratorEventArgs(this)
             {
@@ -168,7 +168,7 @@ namespace Bam.Schema.Json
                 case JSchemaType.Null: 
                 default:
                     Args.Throw<ArgumentException>("JSchemaType of property ({0}).({1}) is not supported: {2}",
-                        property.DeclaringClassName, property.PropertyName, property.Type);
+                        property.DeclaringClassName, property.PropertyName, property.Type!);
                     break;
             }
 

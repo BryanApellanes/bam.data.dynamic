@@ -21,7 +21,7 @@ namespace Bam.Schema.Json
         [XmlIgnore]
         [JsonIgnore]
         [YamlIgnore]
-        public JSchemaClass DeclaringClass { get; set; }
+        public JSchemaClass DeclaringClass { get; set; } = null!;
         
         public bool? IsEnum => ClassOfProperty?.IsEnum;
 
@@ -44,7 +44,7 @@ namespace Bam.Schema.Json
         [JsonIgnore]
         [XmlIgnore]
         [YamlIgnore]
-        public JSchema JSchemaOfArrayItems => JSchemaOfProperty?.Items?.FirstOrDefault();
+        public JSchema JSchemaOfArrayItems => JSchemaOfProperty?.Items?.FirstOrDefault()!;
         
         public JSchemaClass ClassOfArrayItems
         {
@@ -52,14 +52,14 @@ namespace Bam.Schema.Json
             {
                 JSchemaClass jSchemaClass = JSchemaOfArrayItems != null
                     ? new JSchemaClass(JSchemaOfArrayItems, DeclaringClass.ClassManager)
-                    : null;
+                    : null!;
 
                 if (jSchemaClass != null && string.IsNullOrEmpty(jSchemaClass.ClassName))
                 {
                     Logger?.Warning("Unable to determine class name for array items of property ({0}).({1}) using class name ({1})", DeclaringClass.ClassName, PropertyName);
                     jSchemaClass.ClassName = PropertyName;
                 }
-                return jSchemaClass;
+                return jSchemaClass!;
             }
         }
 
@@ -92,16 +92,16 @@ namespace Bam.Schema.Json
                     return result;
                 }
 
-                return null;
-            }  
+                return null!;
+            }
         } 
         
         [JsonConverter(typeof(StringEnumConverter))]
         public JSchemaType? Type => JSchemaOfProperty.Type;
 
-        public string PropertyClassName => Type == JSchemaType.Object ? ClassOfProperty?.ClassName : null;
+        public string PropertyClassName => Type == JSchemaType.Object ? ClassOfProperty?.ClassName! : null!;
 
-        public string PropertyName { get; set; }
+        public string PropertyName { get; set; } = null!;
 
         public override string ToString()
         {

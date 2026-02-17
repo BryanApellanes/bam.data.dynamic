@@ -8,13 +8,13 @@ namespace Bam.Schema.Json
 {
     public class JSchemaClass
     {
-        public JSchemaClass(JSchemaClassManager classManager, string filePath = null)
+        public JSchemaClass(JSchemaClassManager classManager, string filePath = null!)
         {
             ClassManager = classManager;
             FilePath = filePath;
         }
 
-        public JSchemaClass(JSchema jSchema, JSchemaClassManager classManager, string filePath = null) : this(classManager, filePath)
+        public JSchemaClass(JSchema jSchema, JSchemaClassManager classManager, string filePath = null!) : this(classManager, filePath)
         {
             JSchema = jSchema;
             _className = classManager.GetClassNameExtraction(JSchema);
@@ -22,9 +22,9 @@ namespace Bam.Schema.Json
         }
 
         protected internal JSchemaClassManager ClassManager { get; private set; }
-        public string FilePath { get; set; }
+        public string FilePath { get; set; } = null!;
 
-        private JSchemaClassNameExtraction _className;
+        private JSchemaClassNameExtraction _className = null!;
         [Exclude]
         [XmlIgnore]
         [JsonIgnore]
@@ -33,7 +33,7 @@ namespace Bam.Schema.Json
 
         public string ClassName
         {
-            get => _className ?? (_className = ClassManager.GetClassNameExtraction(JSchema));
+            get => (_className ?? (_className = ClassManager.GetClassNameExtraction(JSchema)))!;
             set => _className = new JSchemaClassNameExtraction(value);
         }
 
@@ -61,13 +61,13 @@ namespace Bam.Schema.Json
         [XmlIgnore]
         [JsonIgnore]
         [YamlIgnore]
-        public JSchema JSchema { get; private set; }
+        public JSchema JSchema { get; private set; } = null!;
 
         public IEnumerable<JSchemaProperty> Properties
         {
             get
             {
-                foreach (string propertyName in JSchema?.Properties?.Keys)
+                foreach (string propertyName in JSchema?.Properties?.Keys!)
                 {
                     yield return new JSchemaProperty(JSchema.Properties[propertyName]){DeclaringClass = this, PropertyName = ClassManager.MungePropertyName(propertyName)};
                 }
@@ -122,7 +122,7 @@ namespace Bam.Schema.Json
 
         public JSchemaProperty this[string propertyName]
         {
-            get { return Properties.FirstOrDefault(p => p.PropertyName.Equals(propertyName)); }
+            get { return Properties.FirstOrDefault(p => p.PropertyName.Equals(propertyName))!; }
         }
 
         public string[] PropertyNames()
@@ -130,7 +130,7 @@ namespace Bam.Schema.Json
             return Properties.Select(p => p.PropertyName).ToArray();
         }
         
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             if (obj is JSchemaClass other)
             {

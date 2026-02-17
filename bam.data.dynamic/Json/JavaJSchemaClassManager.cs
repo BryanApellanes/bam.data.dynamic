@@ -2,7 +2,9 @@ namespace Bam.Schema.Json
 {
     public class JavaJSchemaClassManager : JSchemaClassManager
     {
-        private List<string> _truncations;
+#pragma warning disable CS0169, CS0414
+        private List<string> _truncations = null!;
+#pragma warning restore CS0169, CS0414
 
         public JavaJSchemaClassManager() : base("@type", "javaType", "class", "className")
         {            

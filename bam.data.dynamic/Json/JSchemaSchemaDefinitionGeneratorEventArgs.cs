@@ -9,10 +9,10 @@ namespace Bam.Schema.Json
             Generator = generator;
         }
         
-        public Exception Exception { get; set; }
-        public JSchemaSchemaDefinitionGenerator Generator { get; set; }
-        public IDaoSchemaDefinition SchemaDefinition { get; set; }
-        public string TableName { get; set; }
-        public string ColumnName { get; set; }
+        public Exception Exception { get; set; } = null!;
+        public JSchemaSchemaDefinitionGenerator Generator { get; set; } = null!;
+        public IDaoSchemaDefinition SchemaDefinition { get; set; } = null!;
+        public string TableName { get; set; } = null!;
+        public string ColumnName { get; set; } = null!;
     }
 }

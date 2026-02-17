@@ -10,7 +10,7 @@ namespace Bam.Data.Dynamic
 {
     public class DaoAssemblyGenerator: IAssemblyGenerator
     {
-        public DaoAssemblyGenerator(IDaoSchemaExtractor schemaExtractor, IDaoGenerator daoGenerator, IDynamicDataWorkspacePath workspacePath = null)
+        public DaoAssemblyGenerator(IDaoSchemaExtractor schemaExtractor, IDaoGenerator daoGenerator, IDynamicDataWorkspacePath workspacePath = null!)
         {
             this.SchemaExtractor = schemaExtractor;
             this.DaoGenerator = daoGenerator;
@@ -24,7 +24,7 @@ namespace Bam.Data.Dynamic
         public IDynamicDataWorkspacePath WorkspacePath { get; private set; }
 
 
-        DaoSchemaDefinition _schema;
+        DaoSchemaDefinition _schema = null!;
         readonly object _schemaDefinitionLock = new object();
         public DaoSchemaDefinition Schema
         {
@@ -35,10 +35,10 @@ namespace Bam.Data.Dynamic
             set => _schema = value;
         }
         
-        public SchemaNameMap NameMap { get; set; }
-        public string FileName { get; private set; }
-        public string Workspace { get; set; }
-        Assembly _assembly;
+        public SchemaNameMap NameMap { get; set; } = null!;
+        public string FileName { get; private set; } = null!;
+        public string Workspace { get; set; } = null!;
+        Assembly _assembly = null!;
         readonly object _assemblyLock = new object();
         public Assembly Assembly => _assemblyLock.DoubleCheckLock(ref _assembly, GetAssembly);
 
@@ -46,27 +46,29 @@ namespace Bam.Data.Dynamic
         {
             get;
             set;
-        }
+        } = null!;
 
         public GeneratorEventDelegate OnGenerateStarted
         {
             get;
             set;
-        }
+        } = null!;
 
         public GeneratorEventDelegate OnGenerateComplete
         {
             get;
             set;
-        }
+        } = null!;
 
-        public string Namespace { get; set; }
+        public string Namespace { get; set; } = null!;
 
-        protected string FilePath { get; set; }
+        protected string FilePath { get; set; } = null!;
 
-        protected Assembly[] ReferenceAssemblies { get; set; }
+        protected Assembly[] ReferenceAssemblies { get; set; } = null!;
 
-        readonly List<string> _referenceAssemblyPaths;
+        #pragma warning disable CS0649
+        readonly List<string> _referenceAssemblyPaths = null!;
+        #pragma warning restore CS0649
         protected string[] ReferenceAssemblyPaths
         {
             get
@@ -132,7 +134,7 @@ namespace Bam.Data.Dynamic
             this.DaoGenerator.Generate(GetSchemaDefinition(), sourcePath);
         }
 
-        public GeneratedAssemblyInfo Compile(string sourcePath, string fileName = null)
+        public GeneratedAssemblyInfo Compile(string sourcePath, string fileName = null!)
         {
             fileName = fileName ?? FileName;
             RoslynCompiler compiler = new RoslynCompiler();

@@ -7,22 +7,24 @@ namespace Bam.Schema.Json
     public class JSchemaEnumGenerator : Loggable
     {
         [Verbosity(VerbosityLevel.Information)]
-        public event EventHandler GeneratingEnums;
-        
-        [Verbosity(VerbosityLevel.Information)]
-        public event EventHandler GeneratedEnums;
-
-        [Verbosity(VerbosityLevel.Error)] 
-        public event EventHandler GeneratingEnumsException;
+        public event EventHandler GeneratingEnums = null!;
 
         [Verbosity(VerbosityLevel.Information)]
-        public event EventHandler WritingCodeFile;
+        public event EventHandler GeneratedEnums = null!;
+
+        [Verbosity(VerbosityLevel.Error)]
+        public event EventHandler GeneratingEnumsException = null!;
+
+#pragma warning disable CS0067, CS0414
+        [Verbosity(VerbosityLevel.Information)]
+        public event EventHandler WritingCodeFile = null!;
 
         [Verbosity(VerbosityLevel.Information)]
-        public event EventHandler WroteCodeFile;
-        public ILogger Logger { get; set; }
+        public event EventHandler WroteCodeFile = null!;
+#pragma warning restore CS0067, CS0414
+        public ILogger Logger { get; set; } = null!;
 
-        public string Workspace { get; set; }
+        public string Workspace { get; set; } = null!;
         public void GenerateEnums(JSchemaSchemaDefinition jSchemaSchemaDefinition, string nameSpace)
         {
             try

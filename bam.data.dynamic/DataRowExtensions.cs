@@ -4,9 +4,9 @@ namespace Bam.Data.Dynamic
 {
     public static class DataRowExtensions
     {
-        public static dynamic ToDynamic(this DataRow row, string typeName, string nameSpace = null)
+        public static dynamic ToDynamic(this DataRow row, string typeName, string nameSpace = null!)
         {
-            return row.ToDictionary().ToDynamic(typeName, nameSpace);
+            return row.ToDictionary().ToDynamic(typeName, nameSpace)!;
         }
 
         public static Dictionary<object, object> ToDictionary(this DataRow row)

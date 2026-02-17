@@ -21,12 +21,12 @@ namespace Bam.Data.Dynamic
 
             return null;
         }
-        public static dynamic? ToDynamic(this Dictionary<object, object> dictionary, string typeName, string nameSpace = null)
+        public static dynamic? ToDynamic(this Dictionary<object, object> dictionary, string typeName, string nameSpace = null!)
         {
             return ToDynamic(dictionary, typeName, () => new MetadataReference[] { }, nameSpace);
         }
 
-        public static dynamic? ToDynamic(this Dictionary<object, object> dictionary, string typeName, Func<MetadataReference[]> getMetadataReferences, string nameSpace = null)
+        public static dynamic? ToDynamic(this Dictionary<object, object> dictionary, string typeName, Func<MetadataReference[]> getMetadataReferences, string nameSpace = null!)
         {
             nameSpace = nameSpace ?? DynamicObject.DefaultNamespace;
             return DynamicObject.For(nameSpace, typeName, dictionary);

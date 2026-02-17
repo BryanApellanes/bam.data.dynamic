@@ -16,7 +16,7 @@ namespace Bam.Data.Dynamic.Data
             return $"{ParentTypeName}:{PropertyType ?? "object"}:{PropertyName}".ToSha256Int();
         }
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             if(obj is DynamicTypePropertyDescriptor d)
             {

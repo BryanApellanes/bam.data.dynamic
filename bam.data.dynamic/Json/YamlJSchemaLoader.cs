@@ -30,9 +30,9 @@ namespace Bam.Schema.Json
                     if (JSchemaResolver is FileSystemJSchemaResolver fileSystemJSchemaResolver)
                     {
                         fileSystemJSchemaResolver.JSchemaLoader = this;
-                        fileSystemJSchemaResolver.RootDirectory = fileInfo.Directory;
+                        fileSystemJSchemaResolver.RootDirectory = fileInfo.Directory!;
                     }
-                    JSchemaResolver resolver = JSchemaResolver ?? new FileSystemYamlJSchemaResolver(fileInfo.Directory.FullName)
+                    JSchemaResolver resolver = JSchemaResolver ?? new FileSystemYamlJSchemaResolver(fileInfo.Directory!.FullName)
                     {
                         JSchemaLoader = this
                     };

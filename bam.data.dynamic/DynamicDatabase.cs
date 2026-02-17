@@ -22,7 +22,7 @@ namespace Bam.Data.Dynamic
     public partial class DynamicDatabase//: IArbitrateExceptions
     {  
         public DynamicDatabase(){}
-        public DynamicDatabase(Database database, SchemaNameMap schemaNameMap = null)
+        public DynamicDatabase(Database database, SchemaNameMap schemaNameMap = null!)
         {
             this.Database = database;
             //this.ExceptionArbiter = new ExceptionArbiter();
@@ -33,16 +33,16 @@ namespace Bam.Data.Dynamic
         {
             get;
             set;
-        }
+        } = null!;
 
         public static implicit operator Database(DynamicDatabase dyn)
         {
             return dyn.Database;
         }
 
-        public SqlStringBuilder CurrentSql { get; set; }
+        public SqlStringBuilder CurrentSql { get; set; } = null!;
 
-        public Database Database { get; private set; }
+        public Database Database { get; private set; } = null!;
 
         /// <summary>
         /// Execute a query using the current sql buffered in CurrentSql
@@ -60,7 +60,7 @@ namespace Bam.Data.Dynamic
                 {
                     table = MapDataTable(tableName, table);
                 }
-                CurrentSql = null;
+                CurrentSql = null!;
                 foreach (object obj in table.ToDynamic(tableName))
                 {
                     yield return obj;
@@ -147,7 +147,7 @@ namespace Bam.Data.Dynamic
             {
                 throw new MultipleEntriesFoundException();
             }
-            return results.Length == 1 ? results[0] : null;
+            return results.Length == 1 ? results[0] : null!;
         }
         /*
          * new {
@@ -308,7 +308,7 @@ namespace Bam.Data.Dynamic
             return table;
         }
 
-        static List<string> _tablePropertyNames;
+        static List<string> _tablePropertyNames = null!;
         private static List<string> TablePropertyNames
         {
             get
@@ -321,7 +321,7 @@ namespace Bam.Data.Dynamic
             }
         }
 
-        static List<string> _keywordProperties;
+        static List<string> _keywordProperties = null!;
         private static List<string> KeywordProperties
         {
             get

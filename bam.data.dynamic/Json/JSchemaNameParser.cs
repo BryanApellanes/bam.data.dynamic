@@ -31,20 +31,20 @@ namespace Bam.Schema.Json
 
                 if (string.IsNullOrEmpty(result))
                 {
-                    result = MungeClassName(schema.ToJson().Sha256());
+                    result = MungeClassName(schema!.ToJson().Sha256());
                 }
 
                 return result;
             };
             ExtractJObjectClassName = jObject =>
             {
-                if (jObject["type"].Equals("object"))
+                if (jObject["type"]!.Equals("object"))
                 {
                     foreach (string classNameProperty in _classNameProperties)
                     {
-                        if (!string.IsNullOrEmpty(jObject[classNameProperty].ToString()))
+                        if (!string.IsNullOrEmpty(jObject[classNameProperty]!.ToString()))
                         {
-                            return MungeClassName(jObject[classNameProperty].ToString());
+                            return MungeClassName(jObject[classNameProperty]!.ToString());
                         }
                     }
                 }

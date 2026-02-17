@@ -45,10 +45,10 @@ namespace Bam.Data.Dynamic
             return resolver.ResolveJsonTypeName(json);
         }
 
-        public event EventHandler InvalidFormatSpecified;
-        public event EventHandler JsonTypeNameResolved;
-        public event EventHandler YamlTypeNameResolved;
-        public event EventHandler CsvTypeNameResolved;
+        public event EventHandler InvalidFormatSpecified = null!;
+        public event EventHandler JsonTypeNameResolved = null!;
+        public event EventHandler YamlTypeNameResolved = null!;
+        public event EventHandler CsvTypeNameResolved = null!;
 
         public string ResolveTypeName(string input, DynamicTypeFormats format)
         {
@@ -99,9 +99,9 @@ namespace Bam.Data.Dynamic
             return ResolveTypeName(jobject, out bool ignore);
         }
 
-        public string ResolveTypeName(Dictionary<object, object> value)
+        public string ResolveTypeName(Dictionary<object, object>? value)
         {
-            return ResolveTypeName(value, out _);
+            return ResolveTypeName(value!, out _);
         }
 
         public string ResolveTypeName(Dictionary<object, object> value, out bool isDefault)
@@ -152,7 +152,7 @@ namespace Bam.Data.Dynamic
             {
                 if (TypeNameFields.Contains(prop.Name))
                 {
-                    return (prop.Value)?.ToString();
+                    return (prop.Value)?.ToString()!;
                 }
             }
 

@@ -11,8 +11,8 @@
     [Serializable]
     public class RootDocument: RepoData
     {
-        public string FileName { get; set; }
-        public string Content { get; set; }
-        public string ContentHash { get; set; }
+        public string FileName { get; set; } = null!;
+        public string Content { get; set; } = null!;
+        public string ContentHash { get; set; } = null!;
     }
 }

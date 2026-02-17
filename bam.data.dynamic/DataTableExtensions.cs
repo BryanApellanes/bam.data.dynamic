@@ -4,7 +4,7 @@ namespace Bam.Data.Dynamic
 {
     public static class DataTableExtensions
     {
-        public static IEnumerable<dynamic> ToDynamic(this DataTable table, string typeName, string nameSpace = null)
+        public static IEnumerable<dynamic> ToDynamic(this DataTable table, string typeName, string nameSpace = null!)
         {
             foreach (DataRow row in table.Rows)
             {

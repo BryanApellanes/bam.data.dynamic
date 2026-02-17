@@ -12,7 +12,7 @@ namespace Bam.Data.Dynamic
             DataInstances = new List<DataInstance>() { dataInstance };
         }
 
-        public DynamicTypeDescriptor DynamicTypeDescriptor { get; set; }
-        public List<DataInstance> DataInstances { get; set; }
+        public DynamicTypeDescriptor DynamicTypeDescriptor { get; set; } = null!;
+        public List<DataInstance> DataInstances { get; set; } = null!;
     }
 }

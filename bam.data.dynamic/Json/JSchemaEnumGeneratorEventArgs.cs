@@ -6,10 +6,10 @@ namespace Bam.Schema.Json
         {
             this.Generator = generator;
         }
-        public Exception Exception { get; set; }
-        public JSchemaEnumGenerator Generator { get; set; }
-        public JSchemaSchemaDefinition JSchemaSchemaDefinition { get; set; }
-        public EnumModel Model { get; set; }
-        public string CodeFile { get; set; }
+        public Exception Exception { get; set; } = null!;
+        public JSchemaEnumGenerator Generator { get; set; } = null!;
+        public JSchemaSchemaDefinition JSchemaSchemaDefinition { get; set; } = null!;
+        public EnumModel Model { get; set; } = null!;
+        public string CodeFile { get; set; } = null!;
     }
 }

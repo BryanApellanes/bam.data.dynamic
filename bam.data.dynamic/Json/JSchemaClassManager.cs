@@ -12,7 +12,7 @@ namespace Bam.Schema.Json
         public JSchemaClassManager(JSchemaResolver jSchemaResolver):this("className")
         {
             JSchemaResolver = jSchemaResolver;
-            Logger = Log.Default;
+            Logger = Log.Default!;
         }
 
         /// <summary>
@@ -44,11 +44,11 @@ namespace Bam.Schema.Json
                 {
                     if (_classNamePropertyMungers.ContainsKey(classNameProperty))
                     {
-                        return _classNamePropertyMungers[classNameProperty](value.ToString());
+                        return _classNamePropertyMungers[classNameProperty](value.ToString()!);
                     }
                     else
                     {
-                        return MungeClassName == null ? value.ToString(): MungeClassName(value.ToString());
+                        return MungeClassName == null ? value.ToString()!: MungeClassName(value.ToString()!);
                     }
                 }
             }
@@ -56,10 +56,10 @@ namespace Bam.Schema.Json
             return string.Empty;
         }
         
-        public JSchemaResolver JSchemaResolver { get; set; }
+        public JSchemaResolver JSchemaResolver { get; set; } = null!;
         public JSchemaNameParser JSchemaNameParser { get; set; }
-        
-        public ILogger Logger { get; set; }
+
+        public ILogger Logger { get; set; } = null!;
 
         public JSchemaClassNameExtraction GetClassNameExtraction(JSchema jSchema)
         {
@@ -242,7 +242,7 @@ namespace Bam.Schema.Json
 
         private static JSchemaLoader GetJSchemaLoader(FileInfo fileInfo)
         {
-            JSchemaLoader loader = null;
+            JSchemaLoader loader = null!;
             if (fileInfo.Extension.Equals(".yaml", StringComparison.InvariantCultureIgnoreCase))
             {
                 loader = JSchemaLoader.ForFormat(SerializationFormat.Yaml);

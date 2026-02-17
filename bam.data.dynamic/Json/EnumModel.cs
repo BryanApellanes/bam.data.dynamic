@@ -13,8 +13,8 @@ namespace Bam.Schema.Json
             Values = jSchemaClass.GetEnumNames().ToArray();
         }
 
-        public string Namespace { get; set; }
-        public string Name { get; set; }
-        public string[] Values { get; set; }
+        public string Namespace { get; set; } = null!;
+        public string Name { get; set; } = null!;
+        public string[] Values { get; set; } = null!;
     }
 }

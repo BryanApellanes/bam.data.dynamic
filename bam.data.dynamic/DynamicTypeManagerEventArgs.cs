@@ -5,9 +5,9 @@ namespace Bam.Data.Dynamic
     [Serializable]
     public class DynamicTypeManagerEventArgs : EventArgs
     {
-        public DynamicTypeDescriptor[] DynamicTypeDescriptors { get; set; }
-        public DynamicTypePropertyDescriptor[] DynamicTypePropertyDescriptors { get; set; }
-        public string TypeName { get; set; }
-        public string FoundTypes { get; set; }
+        public DynamicTypeDescriptor[] DynamicTypeDescriptors { get; set; } = null!;
+        public DynamicTypePropertyDescriptor[] DynamicTypePropertyDescriptors { get; set; } = null!;
+        public string TypeName { get; set; } = null!;
+        public string FoundTypes { get; set; } = null!;
     }
 }

@@ -39,25 +39,25 @@ namespace Bam.Net
         {
             get;
             internal set;
-        }
+        } = null!;
 
         public string TypeName
         {
             get;
             internal set;
-        }
+        } = null!;
 
         public AssemblyBuilder AssemblyBuilder
         {
             get;
             internal set;
-        }
+        } = null!;
 
         public TypeBuilder TypeBuilder
         {
             get;
             internal set;
-        }
+        } = null!;
 
 
     }

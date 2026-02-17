@@ -18,14 +18,14 @@ namespace Bam.Schema.Json
             ClassName = className;
         }
         
-        public JSchema JSchema { get; set; }
-        public JSchemaClass JSchemaClass { get; set; }
-        public JSchemaClassManager JSchemaClassManager { get; set; }
-        
+        public JSchema JSchema { get; set; } = null!;
+        public JSchemaClass JSchemaClass { get; set; } = null!;
+        public JSchemaClassManager JSchemaClassManager { get; set; } = null!;
+
         /// <summary>
         /// The list of properties that the JSchemaClassManager checked.
         /// </summary>
-        public string[] ClassNameProperties { get; set; }
-        public string ClassName { get; set; }
+        public string[] ClassNameProperties { get; set; } = null!;
+        public string ClassName { get; set; } = null!;
     }
 }

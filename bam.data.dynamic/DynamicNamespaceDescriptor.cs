@@ -12,8 +12,8 @@ namespace Bam.Data.Dynamic
         public static string DefaultNamespace => "Bam.Data.Dynamic.RuntimeTypes";
 
         [CompositeKey]
-        public string Namespace { get; set; }
+        public string Namespace { get; set; } = null!;
 
-        public virtual List<DynamicTypeDescriptor> Types { get; set; }
+        public virtual List<DynamicTypeDescriptor> Types { get; set; } = null!;
     }
 }

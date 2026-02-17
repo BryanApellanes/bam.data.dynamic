@@ -5,9 +5,11 @@ namespace Bam.Schema.Json
 {
     public class JSchemaDaoAssemblyGenerator : DaoAssemblyGenerator
     {
-        private DaoAssemblyGenerator _daoGenerator;
+        #pragma warning disable CS0169, CS0414
+        private DaoAssemblyGenerator _daoGenerator = null!;
+        #pragma warning restore CS0169, CS0414
 
-        public JSchemaDaoAssemblyGenerator(IDaoSchemaExtractor schemaExtractor, IDaoGenerator daoGenerator, IDynamicDataWorkspacePath workspacePath = null) : base(schemaExtractor, daoGenerator, workspacePath)
+        public JSchemaDaoAssemblyGenerator(IDaoSchemaExtractor schemaExtractor, IDaoGenerator daoGenerator, IDynamicDataWorkspacePath workspacePath = null!) : base(schemaExtractor, daoGenerator, workspacePath)
         {
         }
 
@@ -19,11 +21,11 @@ namespace Bam.Schema.Json
                     Namespace = $"{nameof(JSchemaDaoAssemblyGenerator)}.Generated";
                 }*/
 
-        public JSchemaSchemaDefinitionGenerator JSchemaSchemaDefinitionGenerator { get; set; }
-        public JSchemaEnumGenerator EnumGenerator { get; set; }
-        public new string Workspace { get; set; }
-        public string JsonSchemaRootPath { get; set; }
-        public new string Namespace { get; set; }
+        public JSchemaSchemaDefinitionGenerator JSchemaSchemaDefinitionGenerator { get; set; } = null!;
+        public JSchemaEnumGenerator EnumGenerator { get; set; } = null!;
+        public new string Workspace { get; set; } = null!;
+        public string JsonSchemaRootPath { get; set; } = null!;
+        public new string Namespace { get; set; } = null!;
 
         public void GenerateSource(string fromJsonSchemaDirectory, string writeSourceToPath)
         {

@@ -32,7 +32,7 @@ namespace Bam.Net
             }
         }
 
-        static DynamicTypeStore _current;
+        static DynamicTypeStore _current = null!;
         static object _currentLock = new object();
         public static DynamicTypeStore Current
         {

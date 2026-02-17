@@ -165,8 +165,8 @@ namespace Bam.Net
         public static dynamic ToDynamic(this DataRow row, string typeName)
         {
             Type dynamicType = ToDynamicType(row, typeName, out AssemblyBuilder ignore);
-            ConstructorInfo ctor = dynamicType.GetConstructor(new Type[] { });
-            object instance = ctor.Invoke(null);
+            ConstructorInfo ctor = dynamicType.GetConstructor(new Type[] { })!;
+            object instance = ctor!.Invoke(null);
             foreach (DataColumn column in row.Table.Columns)
             {
                 PropertyInfo? prop = dynamicType.GetProperty(column.ColumnName);
@@ -197,8 +197,8 @@ namespace Bam.Net
         public static dynamic ToDynamic(string namespaceQualifiedNewTypeName, object instance, Func<PropertyInfo, bool> propertyPredicate, out Type dynamicType)
         {
             dynamicType = instance.ToDynamicType(namespaceQualifiedNewTypeName, propertyPredicate, out AssemblyBuilder ignore);
-            ConstructorInfo ctor = dynamicType.GetConstructor(new Type[] { });
-            object filteredProperties = ctor.Invoke(null);
+            ConstructorInfo ctor = dynamicType.GetConstructor(new Type[] { })!;
+            object filteredProperties = ctor!.Invoke(null);
             filteredProperties.CopyProperties(instance);
             return filteredProperties;
         }
@@ -225,8 +225,8 @@ namespace Bam.Net
             Type instanceType = instance.GetType();
             string newTypeName = $"ValuesOf.{instanceType.Namespace}.{instanceType.Name}";
             dynamicType = ValuePropertiesToDynamicType(instance, newTypeName, out AssemblyBuilder ignore);
-            ConstructorInfo ctor = dynamicType.GetConstructor(new Type[] { });
-            object valuesOnlyInstance = ctor.Invoke(null);
+            ConstructorInfo ctor = dynamicType.GetConstructor(new Type[] { })!;
+            object valuesOnlyInstance = ctor!.Invoke(null);
             valuesOnlyInstance.CopyProperties(instance);
             return valuesOnlyInstance;
         }
@@ -258,8 +258,8 @@ namespace Bam.Net
         public static T DataClone<T>(this T instance) where T : new()
         {
             T result = new T();
-            object temp = ToDynamicData(instance, nameof(T));
-            temp.CopyProperties(instance);
+            object temp = ToDynamicData(instance!, nameof(T));
+            temp.CopyProperties(instance!);
             result.CopyProperties(temp);
             return result;
         }
@@ -385,7 +385,7 @@ namespace Bam.Net
                     assemblyBuilder = AssemblyBuilder.DefineDynamicAssembly(assemblyName, AssemblyBuilderAccess.Run);
                 }
 
-                ModuleBuilder moduleBuilder = assemblyBuilder.DefineDynamicModule(assemblyName.Name);
+                ModuleBuilder moduleBuilder = assemblyBuilder.DefineDynamicModule(assemblyName.Name!);
                 typeBuilder = moduleBuilder.DefineType(name, TypeAttributes.Public);
 
                 DynamicTypeStore.Current.AddType(typeName, new DynamicTypeInfo { AssemblyBuilder = assemblyBuilder, TypeBuilder = typeBuilder, TypeName = typeName });
@@ -513,7 +513,7 @@ namespace Bam.Net
             return instances;
         }
 
-        public static IEnumerable<dynamic> ToDynamicEnumerable(this DataTable table, string typeName = null)
+        public static IEnumerable<dynamic> ToDynamicEnumerable(this DataTable table, string typeName = null!)
         {
             typeName = typeName ?? table.TableName.Or(8.RandomLetters());
             foreach (DataRow row in table.Rows)
@@ -733,12 +733,12 @@ namespace Bam.Net
 
                 foreach (object key in dictionary.Keys)
                 {
-                    string propertyName = key as string;
+                    string propertyName = (key as string)!;
                     if (propertyName == null)
                     {
                         Args.Throw<InvalidOperationException>("Key was ({0}), expected string", key.GetType().Name);
                     }
-                    propertyName = propertyName.PascalCase();
+                    propertyName = propertyName!.PascalCase();
                     object value = dictionary[key];
                     if (value == null)
                     {
