@@ -64,16 +64,26 @@ namespace Bam.Data.Dynamic
 
         protected string FilePath { get; set; } = null!;
 
-        protected Assembly[] ReferenceAssemblies { get; set; } = null!;
+        protected Assembly[] ReferenceAssemblies { get; set; } = Array.Empty<Assembly>();
 
-        #pragma warning disable CS0649
-        readonly List<string> _referenceAssemblyPaths = null!;
-        #pragma warning restore CS0649
+        readonly List<string> _referenceAssemblyPaths = new List<string>();
+
+        /// <summary>
+        /// The file paths of <see cref="ReferenceAssemblies"/>, plus any extra paths. An assembly with no file
+        /// (loaded from bytes, as runtime-generated Dao assemblies are) cannot be referenced by path and is skipped.
+        /// </summary>
         protected string[] ReferenceAssemblyPaths
         {
             get
             {
-                var results = new List<string>(ReferenceAssemblies.Select(a => a.GetFilePath()).ToArray());
+                List<string> results = new List<string>();
+                foreach (Assembly assembly in ReferenceAssemblies)
+                {
+                    if (assembly.TryGetFileInfo(out FileInfo? fileInfo))
+                    {
+                        results.Add(fileInfo.FullName);
+                    }
+                }
                 results.AddRange(_referenceAssemblyPaths);
                 return results.ToArray();
             }
